@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fs = require("fs");
 var Twit = require("twit");
 
 var bot = new Twit({
@@ -22,7 +23,10 @@ function getColors() {
             colors.push(tweet.text.slice(2, 8));
           }
         });
-        console.log(colors);
+        fs.writeFile("colors.json", JSON.stringify(colors), (err) => {
+          if (err) throw err;
+          console.log("Colors written to color.json");
+        });
       }
     }
   );
