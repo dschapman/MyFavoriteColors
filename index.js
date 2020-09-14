@@ -1,0 +1,31 @@
+require("dotenv").config();
+var Twit = require("twit");
+
+var bot = new Twit({
+  consumer_key: process.env.TWITTER_API_KEY,
+  consumer_secret: process.env.TWITTER_API_SECRET_KEY,
+  app_only_auth: true,
+  timeout_ms: 60 * 1000,
+});
+
+function getColors() {
+  let colors = new Array();
+  bot.get(
+    "favorites/list",
+    { screen_name: "ds_chapman", count: 200 },
+    function (err, data, response) {
+      if (err) {
+        console.log(err);
+      } else {
+        data.forEach(function (tweet) {
+          if (tweet.user.screen_name === "everycolorbot") {
+            colors.push(tweet.text.slice(2, 8));
+          }
+        });
+        console.log(colors);
+      }
+    }
+  );
+}
+
+getColors();
