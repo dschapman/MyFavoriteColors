@@ -20,7 +20,10 @@ function getColors() {
       } else {
         data.forEach(function (tweet) {
           if (tweet.user.screen_name === "everycolorbot") {
-            colors.push(`#${tweet.text.slice(2, 8)}`);
+            const color = {};
+            color.text = `#${tweet.text.slice(2, 8)}`;
+            color.url = `https://twitter.com/i/web/status/${tweet.id_str}`;
+            colors.push(color);
           }
         });
         fs.writeFile("colors.json", JSON.stringify(colors), (err) => {

@@ -8,11 +8,18 @@
 </script>
 
 <style>
+  a {
+    text-decoration-color: white;
+  }
   h1,
   h2,
   h3,
   p {
     text-align: center;
+  }
+
+  h2 {
+    font-weight: 400;
   }
   h3 {
     font-style: italic;
@@ -26,6 +33,7 @@
     text-align: center;
     padding: 75px 0;
   }
+
   .container {
     display: flex;
     flex-wrap: wrap;
@@ -44,12 +52,14 @@
 {#if mounted}
   <div class="container">
     {#each colors as color}
-      <div
-        class="color"
-        style="background-color: {color}"
-        transition:fade={{ delay: randomInt(250, 1500)() }}>
-        {color}
-      </div>
+      <a href={color.url}>
+        <div
+          class="color"
+          style="background-color: {color.text}"
+          transition:fade={{ delay: randomInt(250, 1500)() }}>
+          {color.text}
+        </div>
+      </a>
     {/each}
   </div>
 {/if}
