@@ -63,3 +63,8 @@
     {/each}
   </div>
 {/if}
+<h3>
+  See "<a
+    href="https://www.dschapman.com/articles/how-i-used-twitter-as-a-cms">How I
+    used Twitter as a CMS</a>" for more on how this site was built.
+</h3>
