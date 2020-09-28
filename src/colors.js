@@ -21,7 +21,7 @@ function getColors() {
         data.forEach(function (tweet) {
           if (tweet.user.screen_name === "everycolorbot") {
             const color = {};
-            color.text = `#${tweet.text.slice(2, 8)}`;
+            color.text = `${tweet.text.slice(2, 8)}`;
             color.url = `https://twitter.com/i/web/status/${tweet.id_str}`;
             colors.push(color);
           }
